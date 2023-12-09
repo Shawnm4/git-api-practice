@@ -1,22 +1,26 @@
+import Display from "./Display";
+
 export default function Navigation({
   setCurrency,
   setCountry1,
   setCountry2,
   convertedCurrency,
   currency,
+  country1,
+  country2,
 }) {
   return (
     <nav>
       <input
         className="currency-input"
-        type="text"
-        placeholder="Insert amount"
+        type="number"
+        placeholder="Enter amount"
         value={currency}
         onChange={(e) => setCurrency(e.target.value)}
       />
       <div className="nav-flex-container">
         <div>
-          <p>Convert From</p>
+          <p class="convert-text">Convert From</p>
           <select
             className="selector country1select"
             onChange={(e) => setCountry1(e.target.value)}
@@ -26,7 +30,6 @@ export default function Navigation({
             <option value="CAD">Canada</option>
             <option value="INR">India / Bhutan</option>
             <option value="AUD">Australia</option>
-            <option value="BGN ">Bulgaria</option>
             <option value="BRL">Brazil</option>
             <option value="CHF">Switzerland / Liechtenstein</option>
             <option value="CNY">China</option>
@@ -54,7 +57,7 @@ export default function Navigation({
           </select>
         </div>
         <div>
-          <p>Convert To</p>
+          <p className="convert-text">Convert To</p>
           <select
             className="selector country2select"
             onChange={(e) => setCountry2(e.target.value)}
@@ -64,7 +67,6 @@ export default function Navigation({
             <option value="CAD">Canada</option>
             <option value="INR">India / Bhutan</option>
             <option value="AUD">Australia</option>
-            <option value="BGN ">Bulgaria</option>
             <option value="BRL">Brazil</option>
             <option value="CHF">Switzerland / Liechtenstein</option>
             <option value="CNY">China</option>
@@ -93,6 +95,12 @@ export default function Navigation({
         </div>
         {/* <p>{Number(convertedCurrency).toFixed(2)}</p> */}
       </div>
+      <Display
+        convertedCurrency={convertedCurrency}
+        currency={currency}
+        country1={country1}
+        country2={country2}
+      />
     </nav>
   );
 }

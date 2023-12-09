@@ -16,8 +16,9 @@ export function useFetchConvertedCash(currency) {
           { signal: controller.signal }
         );
         const data = await res.json();
-        console.log(data);
+
         setConvertedCurrency(data.rates[country2]);
+        console.log(data);
         // console.log(
         //   Object.entries(data.rates).map((x) => {
         //     return {
